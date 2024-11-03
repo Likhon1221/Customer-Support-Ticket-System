@@ -14,10 +14,33 @@ async function fetchTickets() {
         if (tickets.length === 0) {
             throw new Error('Tickets not found');
         }
-        
+
         displayTickets(tickets);
     } catch (error) {
         container.innerHTML = `<p>Error: ${error.message}</p>`;
     }
 
-}
+};
+
+// Task 3. Display Tickets Dynamically on the Page
+
+function displayTickets(tickets) {
+    const ticketsContainer = document.getElementById('container');
+    ticketsContainer.innerHTML = '';
+
+    for (let i = 0; i < tickets.length; i++) {
+        const ticket = tickets[i];
+        const ticketElement = document.createElement('div');
+
+        ticketElement.innerHTML = `
+            <p>Customer Name: User ${ticket.userId}</p>
+            <p>Issue Description: ${ticket.title}</p>
+            <p>Details: ${ticket.body}</p>
+            <hr>
+        `;
+
+        ticketsContainer.appendChild(ticketElement);
+    }
+};
+
+fetchTickets();
