@@ -17,10 +17,14 @@ async function fetchTickets() {
 
         displayTickets(tickets);
     } catch (error) {
-        container.innerHTML = `<p>Error: ${error.message}</p>`;
-    }
+        container.innerHTML = `<p>Error: ${error.message}</p>`
+    
+// Task 4 Use finally to Ensure Cleanup
 
+}finally {
+    processingMessage.style.display = 'cleanup';
 };
+}
 
 // Task 3. Display Tickets Dynamically on the Page
 
